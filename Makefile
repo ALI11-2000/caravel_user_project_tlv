@@ -84,10 +84,10 @@ $(blocks): % :
 	@if [ -f $(tlv_path)/$@.tlv ]; then\
 		if [ -f $(tlv_path)/gen/$@.v ]; then\
 			if [ $(tlv_path)/$@.tlv -nt  $(tlv_path)/gen/$@.v ]; then\
-				sandpiper-saas -o $@.v -i $(tlv_path)/$@.tlv --inlineGen --outdir $(tlv_path)/gen/ --sv_url_inc --noline;\
+				sandpiper-saas -o $@.v -i $(tlv_path)/$@.tlv  --outdir $(tlv_path)/gen/ --sv_url_inc --inlineGen --noline --hdl verilog;\
 			fi;\
 		else \
-			sandpiper-saas -o $@.v -i $(tlv_path)/$@.tlv --inlineGen --outdir $(tlv_path)/gen/ --sv_url_inc --noline;\
+			sandpiper-saas -o $@.v -i $(tlv_path)/$@.tlv  --outdir $(tlv_path)/gen/ --sv_url_inc --inlineGen --noline --hdl verilog ;\
 		fi;\
 	fi
 	$(MAKE) -C openlane $*
